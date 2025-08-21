@@ -77,16 +77,4 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    @PostMapping("/import")
-    public ResponseEntity<List<Product>> importProductsFromCsv(@RequestParam String filePath) {
-        try {
-            List<Product> importedProducts = productService.importProductsFromCsv(filePath);
-            return new ResponseEntity<>(importedProducts, HttpStatus.CREATED);
-        } catch (IOException e) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 }
